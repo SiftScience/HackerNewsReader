@@ -14,6 +14,8 @@
 
 #import <HackerNewsNetworker/HNSession.h>
 
+#import <Sift/Sift.h>
+
 #import "UIToolbar+HackerNews.h"
 #import "UITabBar+HackerNews.h"
 #import "UINavigationBar+HackerNews.h"
@@ -35,6 +37,12 @@ NSString * const kHNAppDelegateDidTapStatusBar = @"kHNAppDelegateDidTapStatusBar
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self setupAppirater];
+
+    // Basic integration with Sift.
+    Sift *sift = [Sift sharedInstance];
+    [sift setAccountId:@"YOUR_ACCOUNT_ID"];
+    [sift setBeaconKey:@"YOUR_JAVASCRIPT_SNIPPET_KEY"];
+    [sift setAllowUsingMotionSensors:YES];
 
     [HNQueries loadRemoteQueries];
 

@@ -3,8 +3,7 @@ Pod::Spec.new do |s|
   s.version          = "0.1.0"
   s.summary          = "Networking for Hacker News"
 
-  s.description      = <<-DESC
-                       DESC
+  s.description      = "HackerNewsNetworker"
 
   s.homepage         = "https://github.com/rnystrom/HackerNewsReader"
   s.license          = 'MIT'

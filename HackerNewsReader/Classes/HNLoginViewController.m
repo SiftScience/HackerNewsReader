@@ -11,6 +11,8 @@
 #import <HackerNewsNetworker/HNLogin.h>
 #import <HackerNewsNetworker/HNSession.h>
 
+#import <Sift/Sift.h>
+
 #import "UIViewController+HNOverlay.h"
 #import "HNSessionManager.h"
 
@@ -75,13 +77,15 @@
 
     [self showLoading:YES];
 
-    [HNLogin loginUser:self.usernameTextField.text
+    NSString *username = self.usernameTextField.text;
+    [HNLogin loginUser:username
         withPassword:self.passwordTextField.text
           completion:^(HNSession *session, NSError *error) {
               [self showLoading:NO];
 
               if (session) {
                   [self loginSucceededWithSession:session];
+                  [[Sift sharedInstance] setUserId:username];
               } else {
                   [self showErrorMessage];
               }
